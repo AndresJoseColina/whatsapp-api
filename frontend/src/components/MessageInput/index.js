@@ -356,7 +356,7 @@ const MessageInput = ({ ticketStatus }) => {
       const formData = new FormData();
       const filename = `${new Date().getTime()}.mp3`;
       formData.append("medias", blob, filename);
-      // formData.append("body", filename);
+      formData.append("body", filename);
       formData.append("fromMe", true);
 
       await api.post(`/messages/${ticketId}`, formData);
@@ -490,6 +490,22 @@ const MessageInput = ({ ticketStatus }) => {
                 <AttachFileIcon className={classes.sendMessageIcons} />
               </IconButton>
             </label>
+            <FormControlLabel
+              style={{ marginRight: 7, color: "gray" }}
+              label={i18n.t("messagesInput.signMessage")}
+              labelPlacement="start"
+              control={
+                <Switch
+                  size="small"
+                  checked={signMessage}
+                  onChange={(e) => {
+                    setSignMessage(e.target.checked);
+                  }}
+                  name="showAllTickets"
+                  color="primary"
+                />
+              }
+            />
           </Hidden>
           <Hidden only={["md", "lg", "xl"]}>
             <IconButton
@@ -534,6 +550,24 @@ const MessageInput = ({ ticketStatus }) => {
                     <AttachFileIcon className={classes.sendMessageIcons} />
                   </IconButton>
                 </label>
+              </MenuItem>
+              <MenuItem onClick={handleMenuItemClick}>
+                <FormControlLabel
+                  style={{ marginRight: 7, color: "gray" }}
+                  label={i18n.t("messagesInput.signMessage")}
+                  labelPlacement="start"
+                  control={
+                    <Switch
+                      size="small"
+                      checked={signMessage}
+                      onChange={(e) => {
+                        setSignMessage(e.target.checked);
+                      }}
+                      name="showAllTickets"
+                      color="primary"
+                    />
+                  }
+                />
               </MenuItem>
             </Menu>
           </Hidden>
