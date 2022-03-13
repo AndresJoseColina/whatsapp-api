@@ -490,6 +490,22 @@ const MessageInput = ({ ticketStatus }) => {
                 <AttachFileIcon className={classes.sendMessageIcons} />
               </IconButton>
             </label>
+            <FormControlLabel
+              style={{ marginRight: 7, color: "gray" }}
+              label={i18n.t("messagesInput.signMessage")}
+              labelPlacement="start"
+              control={
+                <Switch
+                  size="small"
+                  checked={signMessage}
+                  onChange={(e) => {
+                    setSignMessage(e.target.checked);
+                  }}
+                  name="showAllTickets"
+                  color="primary"
+                />
+              }
+            />
           </Hidden>
           <Hidden only={["md", "lg", "xl"]}>
             <IconButton
@@ -636,5 +652,4 @@ const MessageInput = ({ ticketStatus }) => {
     );
   }
 };
-
 export default MessageInput;
