@@ -670,5 +670,4 @@ const MessageInput = ({ ticketStatus }) => {
     );
   }
 };
-
 export default MessageInput;
